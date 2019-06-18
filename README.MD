@@ -1,4 +1,4 @@
-##欢迎使用
+欢迎使用
 但，还请支持Termux原版作者
 原版开源链接：https://github.com/termux/termux-app
 
