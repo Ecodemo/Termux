@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-	android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
@@ -12,30 +10,17 @@
         android:layout_alignParentTop="true"
         android:layout_above="@+id/viewpager"
         android:layout_height="match_parent">
-		<LinearLayout
-			android:layout_height="match_parent"
-			android:layout_width="match_parent"
-			android:orientation="vertical">
 
-			<androidx.appcompat.widget.Toolbar
-				android:id="@+id/toolbar"
-				android:theme="@style/ToolbarMenu"
-				android:background="?attr/colorPrimary"
-				android:layout_width="match_parent"
-				android:layout_height="?attr/actionBarSize"
-				app:layout_collapseMode="pin"/>
-			
-			<com.termux.view.TerminalView
-				android:id="@+id/terminal_view"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_marginRight="3dp"
-				android:layout_marginLeft="3dp"
-				android:focusableInTouchMode="true"
-				android:scrollbarThumbVertical="@drawable/terminal_scroll_shape"
-				android:scrollbars="vertical" />
-			
-		</LinearLayout>
+        <com.termux.view.TerminalView
+            android:id="@+id/terminal_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:focusableInTouchMode="true"
+            android:scrollbarThumbVertical="@drawable/terminal_scroll_shape"
+            android:scrollbars="vertical" />
+
         <LinearLayout
             android:id="@+id/left_drawer"
             android:layout_width="240dp"
@@ -91,4 +76,3 @@
         android:background="@android:drawable/screen_background_dark_transparent"
         android:layout_alignParentBottom="true" />
 </RelativeLayout>
-

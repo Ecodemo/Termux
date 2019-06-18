@@ -3,38 +3,19 @@
 
     <!-- See https://developer.android.com/training/material/theme.html for how to customize the Material theme. -->
     <!-- NOTE: Cannot use "Light." since it hides the terminal scrollbar on the default black background. -->
-	<style name="AppTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
-		<item name="android:statusBarColor">#212121</item>
-        <item name="colorPrimary">#212121</item>
-		<item name="colorPrimaryDark">#212121</item>
+    <style name="Theme.Termux" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:colorPrimary">#FF000000</item>
         <item name="android:windowBackground">@android:color/black</item>
 
         <!-- Seen in buttons on left drawer: -->
-        <item name="colorAccent">#FF212121</item>
+        <item name="android:colorAccent">#212121</item>
         <item name="android:alertDialogTheme">@style/TermuxAlertDialogStyle</item>
         <!-- Avoid action mode toolbar pushing down terminal content when
-		selecting text on pre-6.0 (non-floating toolbar). -->
+             selecting text on pre-6.0 (non-floating toolbar). -->
         <item name="android:windowActionModeOverlay">true</item>
 
-        <item name="android:windowTranslucentNavigation">true</item>
-
-        <!-- https://developer.android.com/training/tv/start/start.html#transition-color -->
-        <item name="android:windowAllowReturnTransitionOverlap">true</item>
-        <item name="android:windowAllowEnterTransitionOverlap">true</item>
-	</style>
-    <style name="Theme.Termux" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:statusBarColor">#212121</item>
-        <item name="colorPrimary">#212121</item>
-		<item name="colorPrimaryDark">#212121</item>
-        <item name="android:windowBackground">@android:color/black</item>
-
-        <!-- Seen in buttons on left drawer: -->
-        <item name="colorAccent">#FF212121</item>
-        <item name="android:alertDialogTheme">@style/TermuxAlertDialogStyle</item>
-        <!-- Avoid action mode toolbar pushing down terminal content when
-		selecting text on pre-6.0 (non-floating toolbar). -->
-        <item name="android:windowActionModeOverlay">true</item>
-
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
 
         <!-- https://developer.android.com/training/tv/start/start.html#transition-color -->
@@ -47,17 +28,4 @@
         <item name="android:colorAccent">#212121</item>
     </style>
 
-	
-	<style name="ToolbarMenu">
-		<item name="colorControlNormal">#FFFFFF</item>
-		<item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
-		<item name="titleTextAppearance">@style/Toolbar.TitleText</item>
-	</style>
-	<style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
-		<item name="overlapAnchor">false</item>  <!--设置不覆盖锚点-->
-	</style>
-	<!--ToolBar 字体配置-->
-	<style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-		<item name="android:textSize">16sp</item>
-	</style>
 </resources>

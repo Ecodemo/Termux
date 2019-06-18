@@ -62,9 +62,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -88,8 +85,10 @@ import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import android.app.Activity;
+import android.app.AlertDialog;
 
-public final class TermuxActivity extends AppCompatActivity implements ServiceConnection
+public final class TermuxActivity extends Activity implements ServiceConnection
 {
 
     public static final String TERMUX_FAILSAFE_SESSION_ACTION = "com.termux.app.failsafe_session";
@@ -236,11 +235,6 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         super.onCreate(bundle);
         mSettings = new TermuxPreferences(this);
         setContentView(R.layout.drawer_layout);
-		//设置主页面Toolbar标题栏
-		
-        Toolbar toolbar = findViewById(R.id.toolbar);
-		toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
 		
         mTerminalView = findViewById(R.id.terminal_view);
         mTerminalView.setOnKeyListener(new TermuxViewClient(this));
@@ -544,11 +538,6 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
                 String numberPart = "[" + (position + 1) + "] ";
                 String sessionNamePart = (TextUtils.isEmpty(name) ? "" : name);
                 String sessionTitlePart = (TextUtils.isEmpty(sessionTitle) ? "" : ((sessionNamePart.isEmpty() ? "" : "\n") + sessionTitle));
-				if(TextUtils.isEmpty(sessionTitle)){
-					getSupportActionBar().setTitle("Termux");
-				}else{
-					getSupportActionBar().setTitle(sessionTitle);
-				}
 				
                 String text = numberPart + sessionNamePart + sessionTitlePart;
                 SpannableString styledText = new SpannableString(text);
@@ -813,6 +802,7 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         menu.add(Menu.NONE, CONTEXTMENU_KILL_PROCESS_ID, Menu.NONE, getResources().getString(R.string.kill_process, getCurrentTermSession().getPid())).setEnabled(currentSession.isRunning());
         menu.add(Menu.NONE, CONTEXTMENU_STYLING_ID, Menu.NONE, R.string.style_terminal);
         menu.add(Menu.NONE, CONTEXTMENU_TOGGLE_KEEP_SCREEN_ON, Menu.NONE, R.string.toggle_keep_screen_on).setCheckable(true).setChecked(mSettings.isScreenAlwaysOn());
+		menu.add(Menu.NONE, 0xF999, Menu.NONE, R.string.more_function);
         menu.add(Menu.NONE, CONTEXTMENU_HELP_ID, Menu.NONE, R.string.help);
     }
 
@@ -820,17 +810,13 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
 	{
-		menu.add(Menu.NONE, CONTEXTMENU_RESET_TERMINAL_ID, Menu.NONE, R.string.reset_terminal);
-		menu.add(Menu.NONE, CONTEXTMENU_STYLING_ID, Menu.NONE, R.string.style_terminal);
-		menu.add(Menu.NONE, 0xF999, Menu.NONE, R.string.more_function);
-        menu.add(Menu.NONE, CONTEXTMENU_HELP_ID, Menu.NONE, R.string.help);
         return super.onCreateOptionsMenu(menu);
     }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		return menu(item);
+		return super.onOptionsItemSelected(item);
 	}
 
     static LinkedHashSet<CharSequence> extractUrls(String text)
