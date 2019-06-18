@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.termux"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 72
+        versionName "0.72"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.google.android.material:material:1.0.0+'
+	implementation 'androidx.lifecycle:lifecycle-runtime:2.0.0+'
+    implementation project(":terminal-view")
+}
+
+task versionName {
+  doLast {
+    print android.defaultConfig.versionName
+  }
+}

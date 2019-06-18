@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.termux"
+    android:installLocation="internalOnly"
+    android:sharedUserId="com.termux"
+    android:sharedUserLabel="@string/shared_user_label"
+    android:versionCode="72"
+    android:versionName="0.72" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="28" />
+
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:banner="@drawable/banner"
+        android:extractNativeLibs="true"
+        android:fullBackupContent="@xml/backupscheme"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/application_name"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="10.0" />
+
+        <activity
+            android:name="com.termux.app.TermuxActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/application_name"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:theme="@style/Theme.Termux"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+        <activity
+            android:name="com.termux.app.TermuxHelpActivity"
+            android:exported="false"
+            android:label="帮助"
+            android:parentActivityName="com.termux.app.TermuxActivity"
+            android:resizeableActivity="true" />
+        <activity
+            android:name="com.termux.filepicker.TermuxFileReceiverActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/application_name"
+            android:noHistory="true"
+            android:resizeableActivity="true"
+            android:taskAffinity="com.termux.filereceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="application/*" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="message/*" />
+                <data android:mimeType="multipart/*" />
+                <data android:mimeType="text/*" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/*" />
+                <data android:mimeType="application/json" />
+                <data android:mimeType="application/*xml*" />
+                <data android:mimeType="application/*latex*" />
+                <data android:mimeType="application/javascript" />
+            </intent-filter>
+        </activity>
+
+        <activity-alias
+            android:name="com.termux.HomeActivity"
+            android:targetActivity="com.termux.app.TermuxActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.IOT_LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+
+        <provider
+            android:name="com.termux.filepicker.TermuxDocumentsProvider"
+            android:authorities="com.termux.documents"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS" >
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
+
+        <service
+            android:name="com.termux.app.TermuxService"
+            android:exported="false" />
+
+        <receiver android:name="com.termux.app.TermuxOpenReceiver" />
+
+        <provider
+            android:name="com.termux.app.TermuxOpenReceiver$ContentProvider"
+            android:authorities="com.termux.files"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:readPermission="android.permission.permRead" />
+
+        <meta-data
+            android:name="com.sec.android.support.multiwindow"
+            android:value="true" />
+    </application>
+
+</manifest>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="application_name">Termux</string>
+    <string name="shared_user_label">Termux用户</string>
+    <string name="new_session">新会话</string>
+    <string name="new_session_failsafe">故障保护</string>
+    <string name="toggle_soft_keyboard">键盘</string>
+    <string name="reset_terminal">重置</string>
+    <string name="style_terminal">样式</string>
+    <string name="share_transcript_title">终端记录本</string>
+    <string name="help">帮助</string>
+    <string name="toggle_keep_screen_on">保持屏幕打开</string>
+
+    <string name="bootstrap_installer_body">安装中……</string>
+    <string name="bootstrap_error_title">无法安装</string>
+    <string name="bootstrap_error_body">Termux无法安装引导程序包。\n\n请检查网络连接，然后重试。</string>
+    <string name="bootstrap_error_abort">终止</string>
+    <string name="bootstrap_error_try_again">再试一次</string>
+    <string name="bootstrap_error_not_primary_user_message">Termux只能安装在主用户帐户上。</string>
+
+    <string name="max_terminals_reached_title">最大终端</string>
+    <string name="max_terminals_reached_message">在创建新的之前关闭现有的。</string>
+
+    <string name="reset_toast_notification">终端复位</string>
+
+    <string name="select_url">选择链接</string>
+    <string name="select_url_dialog_title">单击要复制的URL或长按打开</string>
+    <string name="select_all_and_share">分享终端</string>
+    <string name="select_url_no_found">在终端中找不到URL</string>
+    <string name="select_url_copied_to_clipboard">复制到剪贴板的URL</string>
+    <string name="share_transcript_chooser_title">发送文本到：</string>
+
+    <string name="kill_process">终止进程（%d）</string>
+    <string name="confirm_kill_process">真的要取消这次回话吗？</string>
+
+    <string name="session_rename_title">设置会话名称</string>
+    <string name="session_rename_positive_button">确定</string>
+    <string name="session_new_named_title">新建命名会话</string>
+    <string name="session_new_named_positive_button">确定</string>
+
+    <string name="styling_not_installed">未安装Termux:Style加载项</string>
+    <string name="styling_install">安装</string>
+
+    <string name="notification_action_exit">退出</string>
+    <string name="notification_action_wake_lock">获取唤醒锁</string>
+    <string name="notification_action_wake_unlock">释放唤醒锁</string>
+
+    <string name="file_received_title">将文件保存到~/downloads/</string>
+    <string name="file_received_edit_button">编辑</string>
+    <string name="file_received_open_folder_button">打开文件夹</string>
+	
+	<string name="more_function">功能</string>
+	
+	<string name="set_data">请输入数据包路径，格式.tar.gz</string>
+	<string name="set_data_button">导入</string>
+</resources>
